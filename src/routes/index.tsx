@@ -4,6 +4,7 @@ import Register, { action as registerAction } from "../Pages/register";
 import Confirmation from "../Pages/confirmation"
 import Students from "../Pages/students";
 import Courses from "../Pages/courses";
+import CourseDetail, { loader as courseDetailLoader } from "../Pages/courseDetail";
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +27,11 @@ export const router = createBrowserRouter([
             {
                 path: "courses",
                 element: <Courses />
+            },
+            {
+                path: "courses/:courseName",
+                element: <CourseDetail />,
+                loader: courseDetailLoader,
             }
         ]
     }
