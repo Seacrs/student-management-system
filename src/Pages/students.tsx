@@ -1,12 +1,19 @@
 import { useStudent } from "../Context/hooks/useStudent";
-import { useState, type SyntheticEvent } from "react";
+import { useState } from "react";
 
 function Students(){
     const { registeredStudents, removeStudent } = useStudent();
     const [search, setSearch] = useState<string>('');
+    const [confirmId, setConfirmId] = useState<string | null>(null);
 
     const filteredItems = registeredStudents.filter(s => s.name.toLowerCase().includes(search));
 
+    const handleDelete = (id: string) => {
+        if(id){
+            removeStudent(id);
+            setConfirmId(null);
+        }
+    }
 
     return (
         <div className="p-10">
@@ -41,11 +48,14 @@ function Students(){
                                 <td className="px-4 py-3 font-medium">{s.email}</td>
                                 <td className="px-4 py-3 font-medium">{s.number}</td>
                                 <td className="px-4 py-3 font-medium">{s.course}</td>
-                                <td className="flex gap-3">
+                                <td className="px-4 py-3 flex gap-2">
                                     <button className="text-xs px-3 py-1.5 rounded-lg border border-blue-200 bg-blue-50 text-blue-700 cursor-pointer">
                                         View Course
                                     </button>
-                                    <button className="text-xs px-3 py-1.5 rounded-lg border border-red-200 bg-red-50 text-red-700 cursor-pointer">
+                                    <button 
+                                        onClick={()=> setConfirmId(s.id)}
+                                        className="text-xs px-3 py-1.5 rounded-lg border border-red-200 bg-red-50 text-red-700 cursor-pointer"
+                                    >
                                         Delete
                                     </button>
                                 </td>
@@ -53,7 +63,35 @@ function Students(){
                         ))}
                     </tbody>
                 </table>
+                {filteredItems.length === 0 && (
+                    <p className="text-center text-sm text-gray-500 py-8">No students match your search.</p>
+                )}
             </div>
+            {
+                confirmId && 
+                <div className="py-5">
+                    <p
+                        className="text-sm font-medium text-red-700 mb-3"
+                    >
+                        Are you sure you want to remove {registeredStudents.find(s => s.id === confirmId)?.name}?
+                    </p>
+                    <div className="flex gap-2">
+                        <button 
+                            onClick={() => handleDelete(confirmId)}
+                            className="text-xs px-4 py-1.5 rounded-lg bg-red-600 text-white cursor-pointer"
+                        >
+                            Remove
+                        </button>
+                        <button
+                            onClick={() => setConfirmId(null)}
+                            className="text-xs px-4 py-1.5 rounded-lg border border-gray-300 cursor-pointer"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+
+            }
         </div>
     )
 }
