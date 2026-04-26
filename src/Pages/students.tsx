@@ -6,7 +6,7 @@ function Students(){
     const [search, setSearch] = useState<string>('');
     const [confirmId, setConfirmId] = useState<string | null>(null);
 
-    const filteredItems = registeredStudents.filter(s => s.name.toLowerCase().includes(search));
+    const filteredItems = registeredStudents.filter(s => s.name.toLowerCase().includes(search.toLowerCase()));
 
     const handleDelete = (id: string) => {
         if(id){
