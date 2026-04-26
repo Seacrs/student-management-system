@@ -22,7 +22,7 @@
 
   body,
   #root {
-    @apply min-h-screen m-0 p-0 bg-gray-100;
+    @apply min-h-screen m-0 p-0 bg-white;
 
     .dark & {
       background-color: #202124;

@@ -12,7 +12,7 @@ function Navbar(){
 
     return (
         <div className="">
-            <div className="px-8 p-3 grid grid-cols-3">
+            <div className="px-8 py-2 grid grid-cols-3">
                 <div>
                     <h1 className="text-2xl">smgt</h1>
                 </div>
