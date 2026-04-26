@@ -10,9 +10,13 @@ export interface Student {
     number: string;
     course: string;
 }
+export interface RegisteredStudent extends Student{
+    id: string;
+}
+
 export interface StudentContextType{
     student: Student | null;
-    registeredStudents: Student[];
+    registeredStudents: RegisteredStudent[];
     setStudent: (student: Student | null) => void;
     addStudent: (student: Student) => void;
     removeStudent: (id: string) => void;

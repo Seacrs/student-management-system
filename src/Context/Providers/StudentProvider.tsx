@@ -1,14 +1,10 @@
 import { useState } from "react";
 import { StudentContext } from "../index";
-import { type Student } from "../index"
+import { type Student, type RegisteredStudent } from "../index"
 import { nanoid } from "nanoid";
 
 export interface StudentProviderProps {
     children: React.ReactNode;
-}
-
-interface RegisteredStudent extends Student{
-    id: string;
 }
 
 const StudentProvider = ({ children }: StudentProviderProps) => {
