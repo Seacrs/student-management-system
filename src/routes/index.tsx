@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router";
 import Layout from "../Components/Layout";
 import Register, { action as registerAction } from "../Pages/register";
 import Confirmation from "../Pages/confirmation"
+import Students from "../Pages/students";
 
 export const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
             {
                 path: "confirmation",
                 element: <Confirmation />
+            },
+            {
+                path: "students",
+                element: <Students />
             }
         ]
     }
