@@ -59,6 +59,7 @@ function Register(){
                 number: actionData.fields.phone,
                 course: actionData.fields.course
             });
+            navigate("/confirmation");
         }
     },[actionData]);
 

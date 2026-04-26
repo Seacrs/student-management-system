@@ -1,16 +1,17 @@
 import { useStudent } from "../Context/hooks/useStudent";
-import {Navigate, NavLink } from "react-router";
+import {Navigate, NavLink, useNavigate } from "react-router";
 
 function Confirmation(){
     const { student, addStudent } = useStudent();
+    const navigate = useNavigate();
 
     if(!student) return <Navigate to="/" replace />;
 
     const handleConfirm = () => {
         if(student){
             addStudent(student);
+            navigate("/students", { replace: true });
         }
-        return null;
     }
 
     return (
