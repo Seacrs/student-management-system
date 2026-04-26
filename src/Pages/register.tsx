@@ -71,6 +71,7 @@ function Register(){
                         name="fullName" 
                         id="" 
                         placeholder="Full name"
+                        defaultValue={fields?.fullName ?? ""}
                         className={inputClass(!!errors?.fullName)}
                     />
                     {errors?.fullName && (
@@ -83,6 +84,7 @@ function Register(){
                         type="email" 
                         name="email"
                         placeholder="email"
+                        defaultValue={fields?.email ?? ""}
                         className={inputClass(!!errors?.email)}
                     />
                     {errors?.email && (
@@ -96,6 +98,7 @@ function Register(){
                         name="phone"
                         pattern="[0-9]*" 
                         placeholder="phone number" 
+                        defaultValue={fields?.phone ?? ""}
                         onKeyDown={(e) => {
                             if (!/[0-9]|Backspace|Delete|ArrowLeft|ArrowRight|Tab/.test(e.key)) {
                                 e.preventDefault();
@@ -111,7 +114,7 @@ function Register(){
                 <div className="flex flex-col gap-1 ml-1">
                     <select 
                         name="courses" 
-                        defaultValue=""
+                        defaultValue={fields?.course ?? ""}
                         className={selectClass(!!errors?.course)}
                     >
                         <option value="" disabled>Select a course</option>
