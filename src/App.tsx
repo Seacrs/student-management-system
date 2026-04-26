@@ -1,10 +1,8 @@
 function App(){
   return (
-    <>
-      <div className="p-4">
-        <h1>Main content</h1>
-      </div>
-    </>
+    <div>
+      <h1>main content</h1>
+    </div>
   )
 }
 
