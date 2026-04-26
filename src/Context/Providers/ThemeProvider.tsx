@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ThemeContext } from "./index";
+import { ThemeContext } from "../index";
 
 export interface ThemeProviderProps{
     children: React.ReactNode

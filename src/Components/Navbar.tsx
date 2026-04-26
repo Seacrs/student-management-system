@@ -1,4 +1,4 @@
-import { useTheme } from "../Context/useTheme";
+import { useTheme } from "../Context/hooks/useTheme";
 import clsx from "clsx";
 import moon from "../assets/moon.svg";
 import sun from "../assets/sun.svg";
