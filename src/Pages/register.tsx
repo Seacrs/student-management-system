@@ -39,10 +39,10 @@ export async function action({ request } : ActionFunctionArgs){
 
 function Register(){
     const courses = [
-        { value: "math", label: "Math"},
-        { value: "science", label: "Science"},
-        { value: "english", label: "English"},
-        { value: "history", label: "History"},
+        { value: "Math", label: "Math"},
+        { value: "Science", label: "Science"},
+        { value: "English", label: "English"},
+        { value: "History", label: "History"},
     ]
 
     const { setStudent, student } = useStudent();

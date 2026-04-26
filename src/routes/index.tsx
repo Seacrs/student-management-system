@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import Layout from "../Components/Layout";
 import Register, { action as registerAction } from "../Pages/register";
+import Confirmation from "../Pages/confirmation"
 
 export const router = createBrowserRouter([
     {
@@ -11,6 +12,10 @@ export const router = createBrowserRouter([
                 index: true,
                 element: <Register />,
                 action: registerAction
+            },
+            {
+                path: "confirmation",
+                element: <Confirmation />
             }
         ]
     }
