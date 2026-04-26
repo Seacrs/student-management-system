@@ -13,9 +13,9 @@ function Navbar(){
     return (
         <div className="">
             <div className="p-3 grid grid-cols-3">
-                <div className="dark:rounded-4xl dark:bg-white dark:max-w-10 dark:flex dark:items-center dark:justify-center p-2">
+                <div className="rounded-4xl max-w-10 flex items-center justify-center p-2 hover:bg-gray-300 dark:hover:bg-gray-700">
                     <button onClick={toggleTheme} >
-                        <img src={theme ? sun : moon} alt="" className="w-6" />
+                        <img src={theme ? sun : moon} alt="" className="w-8" />
                     </button>
                 </div>
             </div>
