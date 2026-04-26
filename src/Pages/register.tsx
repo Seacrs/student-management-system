@@ -1,8 +1,11 @@
 import { 
     Form,
     useActionData,
+    useNavigate,
     type ActionFunctionArgs
 } from "react-router";
+import { useStudent } from "../Context/hooks/useStudent";
+import { useEffect } from "react";
 import clsx from "clsx";
 
 export async function action({ request } : ActionFunctionArgs){
@@ -30,7 +33,8 @@ export async function action({ request } : ActionFunctionArgs){
     if(Object.keys(errors).length > 0){
         return { errors, fields };
     }
-    return ;
+
+    return { errors: {}, fields };
 }
 
 function Register(){
@@ -41,9 +45,27 @@ function Register(){
         { value: "history", label: "History"},
     ]
 
+    const { setStudent, student } = useStudent();
+    const navigate = useNavigate();
     const actionData = useActionData<typeof action>();
     const errors = actionData?.errors;
     const fields = actionData?.fields;
+
+    useEffect(()=>{
+        if(actionData && Object.keys(actionData.errors).length === 0 && actionData.fields){
+            setStudent({
+                name: actionData.fields.fullName,
+                email: actionData.fields.email,
+                number: actionData.fields.phone,
+                course: actionData.fields.course
+            });
+        }
+    },[actionData]);
+
+    const defaultName = fields?.fullName ?? student?.name ?? "";
+    const defaultEmail = fields?.email ?? student?.email ?? "";
+    const defaultPhone = fields?.phone ?? student?.number ?? "";
+    const defaultCourse = fields?.course ?? student?.course ?? "";
 
     const inputClass = (hasError : boolean) => clsx (
         "border-2 border-gray-300 rounded-2xl pl-4 p-3 w-md",
@@ -71,7 +93,7 @@ function Register(){
                         name="fullName" 
                         id="" 
                         placeholder="Full name"
-                        defaultValue={fields?.fullName ?? ""}
+                        defaultValue={defaultName}
                         className={inputClass(!!errors?.fullName)}
                     />
                     {errors?.fullName && (
@@ -84,7 +106,7 @@ function Register(){
                         type="email" 
                         name="email"
                         placeholder="email"
-                        defaultValue={fields?.email ?? ""}
+                        defaultValue={defaultEmail}
                         className={inputClass(!!errors?.email)}
                     />
                     {errors?.email && (
@@ -98,7 +120,7 @@ function Register(){
                         name="phone"
                         pattern="[0-9]*" 
                         placeholder="phone number" 
-                        defaultValue={fields?.phone ?? ""}
+                        defaultValue={defaultPhone}
                         onKeyDown={(e) => {
                             if (!/[0-9]|Backspace|Delete|ArrowLeft|ArrowRight|Tab/.test(e.key)) {
                                 e.preventDefault();
@@ -114,7 +136,7 @@ function Register(){
                 <div className="flex flex-col gap-1 ml-1">
                     <select 
                         name="courses" 
-                        defaultValue={fields?.course ?? ""}
+                        defaultValue={defaultCourse}
                         className={selectClass(!!errors?.course)}
                     >
                         <option value="" disabled>Select a course</option>
