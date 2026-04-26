@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import Layout from "../Components/Layout";
-import Register from "../Pages/register";
+import Register, { action as registerAction } from "../Pages/register";
 
 export const router = createBrowserRouter([
     {
@@ -9,7 +9,8 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Register />
+                element: <Register />,
+                action: registerAction
             }
         ]
     }
