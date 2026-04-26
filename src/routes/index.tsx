@@ -3,6 +3,7 @@ import Layout from "../Components/Layout";
 import Register, { action as registerAction } from "../Pages/register";
 import Confirmation from "../Pages/confirmation"
 import Students from "../Pages/students";
+import Courses from "../Pages/courses";
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
             {
                 path: "students",
                 element: <Students />
+            },
+            {
+                path: "courses",
+                element: <Courses />
             }
         ]
     }
