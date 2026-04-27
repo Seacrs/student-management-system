@@ -78,7 +78,7 @@ function Register(){
     );
 
     return (
-        <div className="min-h-[calc(100vh-64px)] bg-stone-100 dark:bg-stone-950 flex items-center justify-center flex-col px-6 md:px-0">
+        <div className="min-h-[calc(100vh-64px)] md:py-5 bg-stone-100 dark:bg-stone-950 flex items-center justify-center flex-col px-6 md:px-0">
             <Form 
                 method="post"
                 className="w-full max-w-md py-5 px-4 md:px-0 flex flex-col gap-3 md:max-w-lg"

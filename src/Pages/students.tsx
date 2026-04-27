@@ -7,7 +7,7 @@ function Students(){
     const { registeredStudents, removeStudent } = useStudent();
     const [search, setSearch] = useState<string>('');
     const [confirmId, setConfirmId] = useState<string | null>(null);
-    
+
     const total = registeredStudents.length;
     const filteredItems = registeredStudents.filter(s => s.name.toLowerCase().includes(search.toLowerCase()));
 
@@ -19,7 +19,7 @@ function Students(){
     }
 
     return (
-        <div className="p-10">
+        <div className="p-10 bg-stone-100 dark:bg-stone-950 min-h-[calc(100vh-64px)]">
             <div className="mx-4 my-5">
                 <div>
                     <h2 className="text-2xl font-bold">Registered students</h2>
@@ -33,8 +33,8 @@ function Students(){
                     className="border border-gray-300 rounded-xl px-4 py-2 text-sm outline-none focus:border-blue-400"
                 />
             </div>
-            <div className="border border-gray-200 rounded-2xl overflow-hidden">
-                <table className="w-full text-sm">
+            <div className="border border-gray-300 rounded-2xl overflow-hidden">
+                <table className="hidden md:table w-full text-sm">
                     <thead>
                         <tr className="text-left text-xs text-gray-500 uppercase tracking-wide">
                             <th className="px-4 py-3">Name</th>
@@ -46,7 +46,7 @@ function Students(){
                     </thead>
                     <tbody>
                         {filteredItems.map(s => (
-                            <tr key={s.id} className="border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            <tr key={s.id} className="border-b border-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">
                                 <td className="px-4 py-3 font-medium">{s.name}</td>
                                 <td className="px-4 py-3 font-medium">{s.email}</td>
                                 <td className="px-4 py-3 font-medium">{s.number}</td>
@@ -69,6 +69,44 @@ function Students(){
                         ))}
                     </tbody>
                 </table>
+                {/* mobile card */}
+                <div className="md:hidden flex flex-col divide-y divide-gray-300">
+                    {filteredItems.map(s => (
+                        <div 
+                            key={s.id}
+                            className="p-4 flex flex-col gap-3 hover:bg-gray-200 dark:hover:bg-gray-700"
+                        >
+                            <div className="flex justify-between items-start">
+                                <div>
+                                    <p className="font-semibold">{s.name}</p>
+                                    <p className="text-xs text-gray-500">{s.course}</p>
+                                </div>
+                                <button
+                                    onClick={() => setConfirmId(s.id)}
+                                    className="text-xs px-3 py-1.5 rounded-lg border border-red-200 bg-red-50 text-red-700 cursor-pointer"
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                            <div className="flex flex-col gap-1 text-sm">
+                                <div className="flex justify-between">
+                                    <p className="text-gray-500">Email</p>
+                                    <p className="font-medium truncate ml-4">{s.email}</p>
+                                </div>
+                                <div className="flex justify-between">
+                                    <p className="text-gray-500">Phone</p>
+                                    <p className="font-medium">{s.number}</p>
+                                </div>
+                            </div>
+                            <Link
+                                to={`/courses/${s.course}`}
+                                className="text-xs px-3 py-1.5 rounded-lg border border-blue-200 bg-blue-50 text-blue-700 cursor-pointer text-center"
+                            >
+                                View Course
+                            </Link>
+                        </div>
+                    ))}
+                </div>
                 {filteredItems.length === 0 && (
                     <p className="text-center text-sm text-gray-500 py-8">No students match your search.</p>
                 )}
@@ -99,13 +137,13 @@ function Students(){
             }
             <div className="space-y-4 mt-5">
                 <div className="p-5">
-                    <p className="text-xs font-medium tracking-wide text-stone-400 uppercase">
+                    <p className="text-xs font-medium tracking-wide text-stone-500 uppercase">
                         Total students
                     </p>
                     <p className="mt-1 text-5xl font-bold text-stone-950 dark:text-stone-50">{total}</p>
                 </div>
                 <p
-                    className="text-xs font-medium tracking-wide text-stone-400 uppercase px-5"
+                    className="text-xs font-medium tracking-wide text-stone-500 uppercase px-5"
                 >
                     Students per course
                 </p>
@@ -116,7 +154,7 @@ function Students(){
                             return (
                                 <div
                                     key={c.title}
-                                    className="rounded-xl bg-stone-100 dark:bg-black p-4 flex flex-col gap-2"
+                                    className="rounded-xl bg-stone-200 dark:bg-black p-4 flex flex-col gap-2"
                                 >
                                     <p className="text-xs text-stone-900 dark:text-white truncate">{c.title}</p>
                                     <p className="text-2xl font-bold text-stone-900 dark:text-stone-50">{count}</p>
