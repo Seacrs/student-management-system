@@ -20,17 +20,17 @@ function Confirmation(){
     }
 
     return (
-        <div className="flex items-center justify-center p-5">
-            <div className="grid grid-cols-2 gap-2 w-full max-w-4xl my-24 p-10 bg-gray-100 rounded-3xl">
+        <div className="bg-stone-100 dark:bg-stone-950 min-h-[calc(100vh-64px)] flex items-center justify-center p-5 py-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-2 w-full md:max-w-4xl my-24 p-10 bg-gray-200 dark:bg-gray-800 rounded-3xl">
                 <div className="flex flex-col gap-5">
-                    <h2 className="text-4xl">Review Student</h2>
-                    <p> confirm The details before proceeding</p>
-                    <div className="flex gap-6 items-center">
+                    <h2 className="text-3xl md:text-4xl">Review Student</h2>
+                    <p className="text-sm md:text-md"> confirm The details before proceeding</p>
+                    <div className="flex items-center gap-3 md:gap-6">
                         <NavLink 
                             to="/"
                             className="cursor-pointer text-center underline"
                         >
-                            Go back to register page
+                            <span className="text-sm md:text-md">Go back to register page</span>
                         </NavLink>
                         <button onClick={handleConfirm} className="bg-blue-600 p-3 rounded-4xl text-white cursor-pointer w-4/12 border-2 dark:border-0 hover:border-blue-600 hover:bg-white hover:dark:bg-white hover:text-blue-600">
                             Confirm
