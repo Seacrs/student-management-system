@@ -18,7 +18,7 @@ function Navbar(){
     ]
     return (
         <div className="">
-            <div className="relative z-50 px-8 py-2 grid grid-cols-3 items-center">
+            <div className="relative z-50 px-8 py-2 flex items-center justify-between">
 
                 <h1 className="text-2xl">smgt</h1>
 

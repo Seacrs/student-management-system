@@ -69,16 +69,16 @@ function Register(){
     const defaultCourse = fields?.course ?? student?.course ?? "";
 
     const inputClass = (hasError : boolean) => clsx (
-        "border-2 border-gray-300 rounded-2xl pl-4 p-3 w-full",
+        "border-2 dark:border-1 placeholder:text-sm border-gray-300 rounded-2xl pl-4 p-3 w-full",
         hasError ? "border-red-400 focus:border-red-400 outline-none" : "border-2 outline-blue-200 border-gray-300"
     );
     const selectClass = (hasError: boolean) => clsx (
-        "mt-2 border-2 p-3 rounded-2xl w-full bg-white dark:border-gray-600 cursor-pointer  transition-colors",
+        "mt-2 border-2 p-3 rounded-2xl w-full dark:border-gray-600 cursor-pointer transition-colors bg-transparent bg-stone-100 dark:bg-stone-950",
         hasError ? "border-red-400 focus:border-red-400" : "border-gray-300 focus:ring-2 focus:ring-blue-200 outline-blue-200"
     );
 
     return (
-        <div className="flex items-center justify-center flex-col px-6 md:px-0">
+        <div className="min-h-[calc(100vh-64px)] bg-stone-100 dark:bg-stone-950 flex items-center justify-center flex-col px-6 md:px-0">
             <Form 
                 method="post"
                 className="w-full max-w-md py-5 px-4 md:px-0 flex flex-col gap-3 md:max-w-lg"
