@@ -1,15 +1,10 @@
 import { useTheme } from "../Context/hooks/useTheme";
 import { NavLink } from "react-router";
-import clsx from "clsx";
 import moon from "../assets/moon.svg";
 import sun from "../assets/sun.svg";
 
 function Navbar(){
     const { theme, toggleTheme } = useTheme();
-
-    // const activeStyles = ({ isAsctive }: { isActive: boolean}) => clsx(
-
-    // )
 
     return (
         <div className="">

@@ -36,7 +36,7 @@ const StudentProvider = ({ children }: StudentProviderProps) => {
             id: nanoid(),
             ...student
         }]);
-        localStorage.removeItem("studentDraft");
+        setStudent(null);
     }
 
     const removeStudent = (id: string) =>{
