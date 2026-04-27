@@ -69,25 +69,25 @@ function Register(){
     const defaultCourse = fields?.course ?? student?.course ?? "";
 
     const inputClass = (hasError : boolean) => clsx (
-        "border-2 border-gray-300 rounded-2xl pl-4 p-3 w-md",
+        "border-2 border-gray-300 rounded-2xl pl-4 p-3 w-full",
         hasError ? "border-red-400 focus:border-red-400 outline-none" : "border-2 outline-blue-200 border-gray-300"
     );
     const selectClass = (hasError: boolean) => clsx (
-        "mt-2 border-2 p-3 rounded-2xl bg-white dark:border-gray-600 cursor-pointer  transition-colors",
+        "mt-2 border-2 p-3 rounded-2xl w-full bg-white dark:border-gray-600 cursor-pointer  transition-colors",
         hasError ? "border-red-400 focus:border-red-400" : "border-gray-300 focus:ring-2 focus:ring-blue-200 outline-blue-200"
     );
 
     return (
-        <div className="flex items-center justify-center flex-col">
+        <div className="flex items-center justify-center flex-col px-6 md:px-0">
             <Form 
                 method="post"
-                className="py-5 flex flex-col gap-3 max-w-lg"
+                className="w-full max-w-md py-5 px-4 md:px-0 flex flex-col gap-3 md:max-w-lg"
             >
                 <div>
-                    <h2 className="text-3xl">Get Started on smgt</h2>
-                    <p className="text-md">register to receive courses</p>
+                    <h2 className="text-xl md:text-3xl">Get Started on smgt</h2>
+                    <p className="text-sm md:text-md">register to receive courses</p>
                 </div>
-                <p className="font-medium text-lg">Name</p>
+                <p className="font-medium text-md md:text-lg">Name</p>
                 <div className="flex flex-col gap-1 ml-1">
                     <input 
                         type="text" 
@@ -98,10 +98,10 @@ function Register(){
                         className={inputClass(!!errors?.fullName)}
                     />
                     {errors?.fullName && (
-                        <span className="text-red-500 text-sm ml-1">{errors.fullName}</span>
+                        <span className="text-red-500 text-xs md:text-sm ml-1">{errors.fullName}</span>
                     )}
                 </div>
-                <p className="font-medium text-lg">email</p>
+                <p className="font-medium text-md md:text-lg">email</p>
                 <div className="flex flex-col gap-1 ml-1">
                     <input 
                         type="email" 
@@ -111,10 +111,10 @@ function Register(){
                         className={inputClass(!!errors?.email)}
                     />
                     {errors?.email && (
-                        <span className="text-red-500 text-sm ml-1">{errors.email}</span>
+                        <span className="text-red-500 text-xs md:text-sm ml-1">{errors.email}</span>
                     )}
                 </div>
-                <p className="font-medium text-lg">Phone number</p>
+                <p className="font-medium text-md md:text-lg">Phone number</p>
                 <div className="flex flex-col gap-1 ml-1">
                     <input type="text" 
                         inputMode="numeric" 
@@ -130,10 +130,10 @@ function Register(){
                         className={inputClass(!!errors?.phone)}
                     />
                     {errors?.phone && (
-                        <span className="text-red-500 text-sm ml-1">{errors.phone}</span>
+                        <span className="text-red-500 text-xs md:text-sm ml-1">{errors.phone}</span>
                     )}
                 </div>
-                <p className="font-medium text-lg">Course</p>
+                <p className="font-medium text-md md:text-lg">Course</p>
                 <div className="flex flex-col gap-1 ml-1">
                     <select 
                         name="courses" 
@@ -146,7 +146,7 @@ function Register(){
                         ))}
                     </select>
                     {errors?.course && (
-                        <span className="text-red-500 text-sm ml-1">{errors.course}</span>
+                        <span className="text-red-500 text-xs md:text-sm ml-1">{errors.course}</span>
                     )}
                 </div>
                 <button className="bg-blue-600 p-3 rounded-4xl text-white mt-5 cursor-pointer">

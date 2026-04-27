@@ -1,8 +1,6 @@
 import { Link } from "react-router";
 import { courses } from "../data/course";
 
-console.log(courses);
-
 function Courses(){
     return (
         <div className="p-5">
